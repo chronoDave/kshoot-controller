@@ -30,8 +30,6 @@ Encoder EncoderLeft(ENCODER_LEFT_G, ENCODER_LEFT_W);
 Encoder EncoderRight(ENCODER_RIGHT_G, ENCODER_RIGHT_W);
 
 void setup() {
-  Serial.begin(9600);
-
   for (int i = 0; i < 7; i++) {
     pinMode(buttonPins[i], INPUT_PULLUP);
     pinMode(ledPins[i], OUTPUT);
@@ -62,13 +60,7 @@ void loop() {
 
   if (newRight != posRight) {
     int dir = posRight - newRight;
-    Serial.print("Old: ");
-    Serial.print(posRight);
-    Serial.print(" New: ");
-    Serial.print(newRight);
-    Serial.print(" Dir: ");
-    Serial.print(dir);
-    Serial.println();
+
     if (dir < 0) {
       Mouse.move(0, -ENCODER_SENSITIVITY, 0);
     } else {
